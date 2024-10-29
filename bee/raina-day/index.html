@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Raina's B-Day</title>
+</head>
+
+<body>
+    <img src="raina-day.png" width="1200">
+    <div id = 'slider'>
+        <bold id='text-box'>Next Reveal: 11:00 am</bold>
+    </div>
+    <style>
+        #slider {
+            background-color: #F47983;
+            display: block;
+            width: 1200px;
+            height: 10000px;
+            position: absolute;
+            left: 0px;
+            top: 380px;
+        }
+        #text-box {
+            display: block;
+            text-align: center;
+            padding-top: 30px;
+            font-size: 50px;
+            font-family: Arial;
+        }
+    </style>
+    <script>
+        var today = new Date();
+        var hours = today.getHours();
+        // var secs = today.getSeconds();
+        // var hours = secs;
+        console.log('hours: ' + hours);
+        var textBoxDom = document.getElementById('text-box');
+        var sliderDom = document.getElementById('slider');
+        if (hours >= 12+7) {
+            textBoxDom.innerHTML = 'That\'s All Folks!';
+            sliderDom.style.top = '1300px';
+        } else if (hours >= 12+4) {
+            textBoxDom.innerHTML = 'Last Reveal: 7pm';
+            sliderDom.style.top = '970px';
+        } else if (hours >= 12+1) {
+            textBoxDom.innerHTML = 'Third Reveal: 4pm';
+            sliderDom.style.top = '680px';
+        } else if (hours >= 11) {
+            textBoxDom.innerHTML = 'Second Reveal: 1pm';
+            sliderDom.style.top = '380px';
+        } else {
+            textBoxDom.innerHTML = 'First Reveal: 11am';
+            sliderDom.style.top = '0px';
+        }
+    </script>
+</body>
+
+</html>

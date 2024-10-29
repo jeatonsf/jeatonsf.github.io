@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12 Days</title>
+  </head>
+  <body>
+    <main>
+        <h1>12 Days of Christmas</h1>  
+        <div id="names"></div>
+    </main>
+	<script>
+    function foo() {
+      var names = [
+        "Jesse",
+        "Kenn",
+        "June",
+        "Raina",
+        "Deanna & Vinny",
+        "Brit",
+        "Ronnie",
+        "Teri",
+        "Kathy & Tom",
+        "Kenny & Lou",
+        "Joe",
+        "Jillian & Christian"
+      ];
+      names = shuffle(names);
+
+      var div = document.getElementById("names");
+      for (let i = 0; i < names.length; i++) {
+        var tmp = document.createElement("div");
+        tmp.innerHTML = i + 1 + " day of Christmas: " + names[i];
+        div.append(tmp);
+      }
+    }
+
+    function shuffle(array) {
+      let currentIndex = array.length,  randomIndex;
+      while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+      return array;
+    }
+
+    foo();
+  </script>
+  </body>
+</html>
