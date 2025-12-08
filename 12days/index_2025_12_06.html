@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12 Days</title>
+  </head>
+  <body>
+    <main>
+        <h1>12 Days of Christmas</h1>  
+        <div id="names"></div>
+    </main>
+	<script>
+  function foo() {
+    var names = [
+      "Jesse & Raina",  // @eat: "Jesse" -> "Jesse & Raina" on 2025-12-07
+      "Kenn",
+      "June",
+      // "Raina",  # @eat: Remove 2025-12-07
+      // "Deanna & Vinny",  # @eat: Remove 2025-12-07
+      "Deanna",  // @eat: Added 2025-12-07
+      "Vinny",  // @eat: Added 2025-12-07
+      "Brit",
+      "Ronnie",
+      "Teri",
+      "Kathy & Tom",
+      "Kenny & Lou",
+      "Joe",
+      "Jillian & Christian"
+    ];
+
+    const special = "Kenny & Lou";
+
+    // Remove Kenny & Lou from shuffle pool
+    names = names.filter(n => n !== special);
+
+    // Shuffle the rest
+    names = shuffle(names);
+
+    // Insert Kenny & Lou in position 5
+    names.splice(4, 0, special);
+
+    var div = document.getElementById("names");
+    for (let i = 0; i < names.length; i++) {
+      var tmp = document.createElement("div");
+      tmp.innerHTML = ordinal(i + 1) + " day of Christmas: " + names[i];
+      div.append(tmp);
+    }
+  }
+
+  function shuffle(array) {
+    let currentIndex = array.length, randomIndex;
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+    return array;
+  }
+
+  // Converts 1 → "1st", 2 → "2nd", 3 → "3rd", etc.
+  function ordinal(n) {
+    if (n % 100 >= 11 && n % 100 <= 13) return n + "th";
+    switch (n % 10) {
+      case 1: return n + "st";
+      case 2: return n + "nd";
+      case 3: return n + "rd";
+      default: return n + "th";
+    }
+  }
+
+  foo();
+</script>
+
+
+  </body>
+</html>
